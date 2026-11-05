@@ -229,6 +229,21 @@ export function PathSelector({
     track("path_select", { path: next, method });
   };
 
+  // Links elsewhere on the page can open a path: <a href="#path" data-select-path="learn">.
+  const selectRef = useRef(select);
+  useEffect(() => {
+    selectRef.current = select;
+  });
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const link = (e.target as Element | null)?.closest<HTMLElement>("[data-select-path]");
+      const next = link?.dataset.selectPath;
+      if (next === "learn" || next === "care") selectRef.current(next, "click");
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
   // ----- Swipe between paths below lg (pointer events; vertical scroll stays native) -----
   const dragX = useMotionValue(0);
   const swipe = useRef<{ x: number; y: number; t: number; active: boolean } | null>(null);

@@ -13,6 +13,7 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ClinicianCard } from "@/components/ui/ClinicianCard";
 import { DraftBadge, DraftTag } from "@/components/ui/DraftBadge";
 import { faqItems } from "@/components/ui/faqItems";
+import { site } from "@/content/site";
 import { programTypeLabels } from "@/content/taxonomy";
 import {
   getEvents,
@@ -290,10 +291,11 @@ export default async function ProgramPage({ params }: PageProps<"/academy/progra
               {!program.fee ? (
                 <Detail label="Fee">Confirmed with you before you enrol.</Detail>
               ) : null}
-              {program.fee?.instalments ? (
+              {program.fee ? (
                 <Detail label="Payment">
-                  You can pay in instalments. We share the payment details and schedule when you
-                  enquire.
+                  {site.payment.methods}.{" "}
+                  {program.fee.instalments ? `${site.payment.instalments} ` : ""}We confirm the
+                  details when you enrol.
                 </Detail>
               ) : null}
             </dl>

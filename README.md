@@ -53,7 +53,7 @@ All business facts live in `src/content/`:
 
 | File                                                            | Contents                                                                                                                                                                                                                                                               |
 | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `site.ts`                                                       | Name, phone, WhatsApp, email, office address (always labelled "appointments only, not a walk-in clinic"), emergency note                                                                                                                                               |
+| `site.ts`                                                       | Name, phone, WhatsApp, email, office address from the Udyam certificate (always labelled "Our office · visits by appointment"), emergency note                                                                                                                         |
 | `clinician.ts`                                                  | `NAME` and `CREDENTIAL` set the clinician's name, shown everywhere as "Dr. Subash V, O.D. (SWISS)" at his request. Use of "Dr." by optometrists is under legal review; change it here to update the whole site. `role` ("Optometrist") is used only in structured data |
 | `programs.ts`, `events.ts`                                      | Academy programs and workshops/CME. The **Fellowship in Advanced Clinical Optometry** is published from the client's brochure; the other programs and both events are drafts, hidden in production                                                                     |
 | `services.ts`                                                   | The six eye-care services (published). Fees, area, days and hours are empty and therefore hidden                                                                                                                                                                       |
@@ -105,8 +105,10 @@ Facts the brochure does not give are not invented. These include the exact start
 
 - **Brand collaborations:** `src/content/partners.ts` lists six partners, including VV Vision Clinic (Nov 2026). Their logos were cleaned up from WhatsApp images (background removed, trimmed) in `public/images/partners/`; original files would be sharper. The strip can be paused with its button and stands still under reduced motion.
 - **Prism-glasses case:** `src/content/cases.ts` has it as a draft until its photos arrive.
-- **Social profiles:** LinkedIn and Facebook are live. YouTube and Instagram are hidden in production until their profile URLs are pasted into `site.social` (`src/content/site.ts`) with `confirmed: true`, which also adds them to structured data.
-- **GST and Udyam (MSME):** add them to `site.registrations` and they appear in the footer.
+- **Social profiles:** LinkedIn, Facebook, YouTube (@the.visiondoctor) and Instagram (the.visiondoctor) are live and listed in structured data. Any future profile in `site.social` stays hidden until `confirmed: true`.
+- **Registrations:** the Udyam number (UDYAM-TN-02-0517785, from the certificate) is in the footer and privacy notice via `site.registrations` and `site.registeredAddress`. The business is not GST-registered.
+- **Payment:** `site.payment` (cash or UPI; instalments accepted, plan varies by course) feeds the program pages and refund policy.
+- **In-page buttons:** `Button` renders `#hash` links as plain anchors so repeat clicks always scroll. `data-select-path="learn"` on a link also switches the homepage path selector.
 - **Brand logo:** `public/images/brand/` holds the logo from "Vision Doctor Final Logo.zip" (stacked, horizontal and the emblem). The header and footer use the emblem with the name as live text; `src/app/icon.png` and `apple-icon.png` are generated from it. Google Search Console verification is set by `site.googleSiteVerification`.
 
 ## Enquiries
@@ -159,7 +161,7 @@ The founder portrait (`public/images/dr-subash-v.jpg`) is set through `clinician
 ## Quality checks (last run)
 
 - `pnpm lint`, `pnpm typecheck`, `pnpm format:check`, `pnpm build`: all clean.
-- `pnpm test:e2e`: 256 passed, 9 skipped (device-specific tests). This covers axe WCAG 2.2 AA scans of every route (including the fellowship page), the 404 page and the form error state; content-rule checks in production (no drafts, no unverified credentials, no banned claims, a hospital note on every service page, the fellowship's confirmed facts); and the path-selector acceptance checks (heights, keyboard, swipe, `?path=care` with no flash, reduced motion, axe in both states).
+- `pnpm test:e2e`: 260 passed, 9 skipped (device-specific tests). This covers axe WCAG 2.2 AA scans of every route (including the fellowship page), the 404 page and the form error state; content-rule checks in production (no drafts, no unverified credentials, no banned claims, a hospital note on every service page, the fellowship's confirmed facts); and the path-selector acceptance checks (heights, keyboard, swipe, `?path=care` with no flash, reduced motion, axe in both states).
 - First-load JavaScript (gzip, measured before the blog, certifications and partner strip were added): home ≈ 243 KB (the path selector's Framer Motion adds about 44 KB), `/academy` ≈ 187 KB, fellowship page ≈ 190 KB, `/eye-care` ≈ 229 KB. The Next.js and React baseline accounts for about 130 KB of each. CLS measured ≤ 0.005 locally. The H1 is text, so it is the LCP element.
 
 ## Assumptions: missing parts of the brief
@@ -188,4 +190,5 @@ Deliberate deviations:
 2. Have a qualified lawyer review the five legal pages, then set `legal.reviewed = true` in `src/content/legal.ts`. This removes the draft banners and allows indexing.
 3. Set `NEXT_PUBLIC_SITE_URL` and at least one enquiry delivery channel, then send a test enquiry.
 4. Decide on the "Dr." prefix (`clinician.displayName`).
+
 # ThevisonDoctor

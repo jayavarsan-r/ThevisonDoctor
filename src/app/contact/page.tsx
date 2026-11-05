@@ -61,7 +61,7 @@ export default function ContactPage() {
               Eye care appointments
             </h2>
             <p className="text-slate-600">
-              Home consultations, screening and speciality care — by appointment, never walk-in.
+              Home consultations, screening and speciality care — all by appointment.
             </p>
             <div className="mt-auto flex flex-col gap-3 pt-2 sm:flex-row">
               <Button href="/eye-care#book" arrow>

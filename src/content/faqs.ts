@@ -57,8 +57,8 @@ export const faqs: Faq[] = [
     audience: "patient",
     status: "published",
     homepage: true,
-    q: "Is this a walk-in clinic?",
-    a: "No. All consultations are by appointment, at confirmed locations or at your home. We'll confirm the place and time when we call.",
+    q: "Do I need an appointment?",
+    a: "Yes. Every consultation is by appointment, at a confirmed location or at your home. We'll confirm the place and time when we call.",
   },
   {
     id: "p-home-area",

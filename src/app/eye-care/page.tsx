@@ -111,7 +111,8 @@ export default function EyeCarePage() {
               fallback={where.defaultWhereWhen}
             />
             <p className="text-meta text-slate-600">
-              Our Kolathur office is not a walk-in clinic — appointments only.
+              Visits to our Kolathur office are by appointment — call or WhatsApp us to arrange a
+              time.
             </p>
           </div>
         </div>

@@ -97,7 +97,7 @@ export function Hero({
             appointment-based eye care — led by {clinicianName}.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button href="#path" variant="light" arrow>
+            <Button href="#path" variant="light" arrow data-select-path="learn">
               Explore the Academy
             </Button>
             <Button href="/eye-care" variant="ghost-dark">

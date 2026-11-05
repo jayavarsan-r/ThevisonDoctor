@@ -86,6 +86,17 @@ export function Button(props: LinkProps | NativeButtonProps) {
         </a>
       );
     }
+    // In-page jumps (#book, #path…) use a plain anchor. A Next.js <Link> to the
+    // hash already in the URL is a no-op, so a second click would do nothing.
+    if (href.startsWith("#")) {
+      return (
+        <a href={href} className={classes} {...anchor}>
+          <Inner icon={icon} arrow={arrow}>
+            {children}
+          </Inner>
+        </a>
+      );
+    }
     return (
       <Link href={href} className={classes} {...anchor}>
         <Inner icon={icon} arrow={arrow}>

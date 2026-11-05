@@ -141,8 +141,7 @@ export default function AboutPage() {
               training.
             </p>
             <p className="measure text-[15px] text-slate-600">
-              Our teaching team is growing — new faculty and guest speakers will be introduced here
-              as they join.
+              Guest speakers are announced to enrolled students closer to each session.
             </p>
           </div>
         </Row>

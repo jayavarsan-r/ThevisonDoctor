@@ -19,22 +19,22 @@ export const contentNotes: ContentNote[] = [
   {
     page: "Academy › Programs",
     item: "Fellowship — remaining details",
-    note: "Published from the brochure. Still to confirm: exact start date in January 2027, apply-by date, weekly schedule (days and times), what the ₹30,000 fee includes, whether GST applies and refund terms.",
+    note: "Published from the brochure. Still to confirm: exact start date in January 2027, apply-by date, weekly schedule (days and times), what the ₹30,000 fee includes and refund terms.",
   },
   {
     page: "Academy › Programs",
-    item: "Payment details and instalments",
-    note: 'Pages say "You can pay in instalments" (meeting, 29 Oct 2026). Dr. Subash V to send the accepted payment methods (bank transfer, UPI, etc.) and the instalment schedule for each program.',
+    item: "Instalment plans",
+    note: "Pages say payment is by cash or UPI and that instalments are accepted, with the plan varying by course (5 Nov 2026). Send each course's plan if you want it shown.",
   },
   {
     page: "About",
     item: "Teaching faculty and guest speakers",
-    note: "The About page and the fellowship describe expert guest faculty in general terms. Send each faculty member's name, credentials, role and a portrait (with permission) to list them by name.",
+    note: "The About page and the fellowship describe expert guest faculty in general terms; guest speakers are announced to students close to each session. To list teaching faculty by name, send each faculty member's name, credentials, role and a portrait (with permission).",
   },
   {
     page: "Academy › Programs",
     item: "Certifications — remaining details",
-    note: 'Both certifications are published from "Certificate Course.pdf". Still to confirm: intake dates (pages say "Dates to be announced"), weekly schedule, where in-person sessions happen, what the ₹10,000 fee includes and whether GST applies, the assessment format, and whether CRDI is also run with Aradhana Eye Care Hospital. CRDI eligibility now includes Diploma graduates, students and interns (from the 29 Oct meeting notes) — confirm.',
+    note: 'Both certifications are published from "Certificate Course.pdf". Still to confirm: intake dates (pages say "Dates to be announced"), weekly schedule, where in-person sessions happen, what the ₹10,000 fee includes, the assessment format, and whether CRDI is also run with Aradhana Eye Care Hospital. CRDI eligibility now includes Diploma graduates, students and interns (from the 29 Oct meeting notes) — confirm.',
   },
   {
     page: "Academy › Programs",
@@ -63,18 +63,8 @@ export const contentNotes: ContentNote[] = [
   },
   {
     page: "Sitewide",
-    item: "GST and MSME (Udyam) registration",
-    note: "Send the GSTIN and Udyam registration number to show them in the footer (`site.registrations` in src/content/site.ts).",
-  },
-  {
-    page: "Sitewide",
     item: "Office phone number",
     note: "The site lists +91 95141 62051 and thevisiondoctor6.6@gmail.com. If the office has a separate landline, send it for the Contact page.",
-  },
-  {
-    page: "Legal",
-    item: "Legal entity name",
-    note: "The privacy notice, terms and refund policy need the registered business name (and entity type) that collects and processes data. Supply it with the lawyer's review.",
   },
   {
     page: "Eye Care › Before and after",

@@ -28,11 +28,10 @@ test.describe("content rules in production", () => {
     }
   });
 
-  test("office address is labelled as appointments only", async ({ page }) => {
+  test("office address is labelled as by appointment", async ({ page }) => {
     await page.goto("/contact");
-    await expect(
-      page.getByText("Office — appointments only, not a walk-in clinic").first(),
-    ).toBeVisible();
+    await expect(page.getByText("Our office · visits by appointment").first()).toBeVisible();
+    await expect(page.locator("main")).toContainText("22, C-1, Ganapathy Rao Nagar");
     await expect(page.locator("iframe")).toHaveCount(0);
   });
 
@@ -174,7 +173,7 @@ test.describe("content rules in production", () => {
     );
     const crdi = page.getByRole("complementary", { name: "Program details" });
     await expect(crdi).toContainText("₹10,000");
-    await expect(crdi).toContainText("Instalments available");
+    await expect(crdi).toContainText("Cash or UPI · instalments accepted (plan varies by course)");
     await expect(page.locator("main")).toContainText("Optometry students and interns");
     await expect(page.locator("main")).toContainText("Diploma in Optometry graduates");
   });
@@ -192,7 +191,10 @@ test.describe("content rules in production", () => {
     const faculty = page.getByRole("region", { name: "Faculty" });
     await expect(faculty).toContainText("Learn from expert guest faculty");
     await expect(faculty).toContainText("national-level speakers");
-    await expect(page.locator("main")).toContainText("You can pay in instalments");
+    await expect(page.locator("main")).toContainText(
+      "Cash or UPI. Instalments are accepted; the plan varies by course.",
+    );
+    await expect(faculty).toContainText("announced to enrolled students closer to each session");
     await expect(page.locator("main")).toContainText("no government accreditation");
   });
 
@@ -250,8 +252,19 @@ test.describe("content rules in production", () => {
       "href",
       "https://www.facebook.com/share/19RS4o6uq9/",
     );
-    // Profiles without a confirmed URL stay hidden.
-    await expect(footer.getByRole("link", { name: /on YouTube|on Instagram/ })).toHaveCount(0);
+    await expect(footer.getByRole("link", { name: /on YouTube/ })).toHaveAttribute(
+      "href",
+      "https://www.youtube.com/@the.visiondoctor",
+    );
+    await expect(footer.getByRole("link", { name: /on Instagram/ })).toHaveAttribute(
+      "href",
+      "https://www.instagram.com/the.visiondoctor/",
+    );
+  });
+
+  test("the footer shows the Udyam registration", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("footer")).toContainText(/Udyam \(MSME\):\s*UDYAM-TN-02-0517785/);
   });
 
   test("Google site verification is in the head", async ({ page }) => {

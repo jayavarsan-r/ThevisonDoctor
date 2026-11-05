@@ -121,7 +121,7 @@ export const programs: Program[] = [
     // Client copy (Nov 2026); "Leading" and "renowned" removed under the no-superlatives rule.
     guestFaculty: {
       title: "Learn from expert guest faculty",
-      text: "The fellowship features selected guest sessions by national-level speakers and experienced eye care professionals. These sessions offer insights, clinical perspectives and exposure to current advancements in optometry, complementing your regular clinical training.",
+      text: "The fellowship features selected guest sessions by national-level speakers and experienced eye care professionals. These sessions offer insights, clinical perspectives and exposure to current advancements in optometry, complementing your regular clinical training. Guest speakers are announced to enrolled students closer to each session.",
     },
   },
   {

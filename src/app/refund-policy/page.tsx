@@ -18,15 +18,13 @@ export default function RefundPolicyPage() {
       <h2>1. Academy programs, workshops and CME</h2>
       <h3>Fees</h3>
       <p>
-        Each program page states the fee, whether GST applies and what the fee includes. We confirm
-        the fee with you before you enrol.
+        Each program page states the fee and what it includes. We confirm the fee with you before
+        you enrol.
       </p>
       <h3>Payment</h3>
       <p>
-        Accepted payment methods:{" "}
-        <Placeholder>payment methods, e.g. bank transfer or UPI</Placeholder>. Instalments:{" "}
-        <Placeholder>whether instalments are offered</Placeholder>. A receipt or GST invoice is
-        issued for every payment. <Placeholder>GSTIN, if registered</Placeholder>
+        Accepted payment methods: {site.payment.methods.toLowerCase()}. {site.payment.instalments} A
+        receipt is issued for every payment.
       </p>
       <h3>If you cancel</h3>
       <ul>

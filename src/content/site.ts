@@ -21,11 +21,15 @@ export const site = {
     countryCode: "IN",
   },
 
-  /** Office only — never a clinic. Always render with `office.label`. */
+  /** Office only — never a clinic. Address as on the Udyam certificate. Always render with `office.label`. */
   office: {
-    lines: ["22C, Sri Ganapathi Rao Nagar", "Kolathur, Chennai – 600099"],
-    label: "Office — appointments only, not a walk-in clinic",
-    note: "Appointments by arrangement.",
+    lines: [
+      "22, C-1, Ganapathy Rao Nagar",
+      "Papermills Road, Kolathur",
+      "Chennai, Tamil Nadu – 600099",
+    ],
+    label: "Our office · visits by appointment",
+    note: "Call or WhatsApp us to arrange a time.",
   },
 
   phone: {
@@ -53,19 +57,42 @@ export const site = {
       url: "https://www.facebook.com/share/19RS4o6uq9/",
       confirmed: true,
     },
-    { id: "youtube", label: "YouTube", url: "https://www.youtube.com/", confirmed: false },
-    { id: "instagram", label: "Instagram", url: "https://www.instagram.com/", confirmed: false },
+    {
+      id: "youtube",
+      label: "YouTube",
+      url: "https://www.youtube.com/@the.visiondoctor",
+      confirmed: true,
+    },
+    {
+      id: "instagram",
+      label: "Instagram",
+      url: "https://www.instagram.com/the.visiondoctor/",
+      confirmed: true,
+    },
   ],
 
   /** Google Search Console verification token (meta name="google-site-verification"). */
   googleSiteVerification: "3MiwxColfz7E4FqDBFF72B4iwsnA6kvf9w4eSEKSxhY",
 
   /**
-   * Business registrations shown in the footer, e.g.
-   * { label: "GSTIN", value: "33ABCDE1234F1Z5" } or { label: "Udyam (MSME)", value: "UDYAM-TN-00-0000000" }.
-   * Empty = hidden. Owner to supply.
+   * Business registrations shown in the footer. Udyam from the registration
+   * certificate (registered 15 Oct 2026, micro enterprise, services). Not
+   * GST-registered (confirmed 5 Nov 2026).
    */
-  registrations: [] as { label: string; value: string }[],
+  registrations: [{ label: "Udyam (MSME)", value: "UDYAM-TN-02-0517785" }] as {
+    label: string;
+    value: string;
+  }[],
+
+  /** As printed on the Udyam registration certificate; used in the legal pages. */
+  registeredAddress:
+    "22, C-1, Ganapathy Rao Nagar, Papermills Road, Kolathur, Chennai, Tamil Nadu – 600099",
+
+  /** Academy fees (client, 5 Nov 2026). */
+  payment: {
+    methods: "Cash or UPI",
+    instalments: "Instalments are accepted; the plan varies by course.",
+  },
 
   /** e.g. "within one working day". Empty = hidden. Owner to confirm. */
   responseTime: "" as string,
@@ -103,7 +130,8 @@ export const site = {
   emergencyNote:
     "For sudden loss of vision, eye injury or a chemical splash, go to the nearest hospital emergency department immediately. We do not provide emergency care.",
 
-  notWalkIn: "We are not a walk-in clinic and do not provide emergency care.",
+  notWalkIn:
+    "Every visit is by appointment, so we can give you our full attention. We don't provide emergency care.",
 } as const;
 
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(

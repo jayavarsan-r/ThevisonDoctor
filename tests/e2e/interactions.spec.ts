@@ -40,10 +40,10 @@ test.describe("homepage", () => {
   test("FAQ tabs switch audiences and accordions open", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("tab", { name: "For patients" }).click();
-    const q = page.getByRole("button", { name: "Is this a walk-in clinic?" });
+    const q = page.getByRole("button", { name: "Do I need an appointment?" });
     await q.click();
     await expect(q).toHaveAttribute("aria-expanded", "true");
-    await expect(page.getByText("No. All consultations are by appointment")).toBeVisible();
+    await expect(page.getByText("Yes. Every consultation is by appointment")).toBeVisible();
   });
 });
 
@@ -192,5 +192,27 @@ test.describe("brand strip motion", () => {
     await expect(strip.locator(".marquee-track")).toHaveCSS("animation-play-state", "paused");
     await page.getByRole("button", { name: "Play logo animation" }).click();
     await expect(strip).not.toHaveAttribute("data-paused", /.*/);
+  });
+});
+
+test.describe("in-page buttons", () => {
+  test("Explore the Academy works on every click and opens the Academy path", async ({ page }) => {
+    await page.goto("/");
+    const button = page.getByRole("link", { name: "Explore the Academy" }).first();
+    for (let i = 0; i < 3; i++) {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+      if (i === 1) {
+        // Switch to Care in between: the button should bring the Academy path back.
+        await page.locator('[data-path-tab="care"]').first().click();
+        await page.evaluate(() => window.scrollTo(0, 0));
+      }
+      await button.click();
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(300);
+      await expect(page.locator('[data-path-tab="learn"]').first()).toHaveAttribute(
+        "aria-selected",
+        "true",
+      );
+    }
   });
 });

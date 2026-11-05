@@ -25,9 +25,9 @@ export default function PrivacyPage() {
         Protection Act, 2023 (&quot;DPDP Act&quot;).
       </p>
       <p>
-        Contact: <a href={`mailto:${site.email}`}>{site.email}</a> · {site.phone.display}. Legal
-        entity name and registered address:{" "}
-        <Placeholder>legal entity name and registered address</Placeholder>.
+        Contact: <a href={`mailto:${site.email}`}>{site.email}</a> · {site.phone.display}. This
+        website is run by {site.name}, {site.registeredAddress} (Udyam registration{" "}
+        {site.registrations[0]?.value}).
       </p>
 
       <h2>2. What we collect</h2>

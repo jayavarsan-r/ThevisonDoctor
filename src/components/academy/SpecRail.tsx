@@ -1,3 +1,4 @@
+import { site } from "@/content/site";
 import type { Program } from "@/content/types";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/icons";
@@ -52,7 +53,9 @@ export function SpecRail({ program, today }: { program: Program; today: string }
           { label: "Fee includes", value: program.fee?.includes?.join(", ") },
           {
             label: "Payment",
-            value: program.fee?.instalments ? "Instalments available" : undefined,
+            value: program.fee
+              ? `${site.payment.methods}${program.fee.instalments ? " · instalments accepted (plan varies by course)" : ""}`
+              : undefined,
           },
           ...(event
             ? []
