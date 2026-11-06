@@ -19,7 +19,7 @@ export const contentNotes: ContentNote[] = [
   {
     page: "Academy › Programs",
     item: "Fellowship — remaining details",
-    note: "Published from the brochure. Still to confirm: exact start date in January 2027, apply-by date, weekly schedule (days and times), what the ₹30,000 fee includes and refund terms.",
+    note: "Published from the brochure. Still to confirm: exact start date in January 2027 (intakes every January and July), apply-by date, weekly schedule (days and times), what the ₹29,999 fee includes and refund terms.",
   },
   {
     page: "Academy › Programs",
@@ -34,7 +34,7 @@ export const contentNotes: ContentNote[] = [
   {
     page: "Academy › Programs",
     item: "Certifications — remaining details",
-    note: 'Both certifications are published from "Certificate Course.pdf". Still to confirm: intake dates (pages say "Dates to be announced"), weekly schedule, where in-person sessions happen, what the ₹10,000 fee includes, the assessment format, and whether CRDI is also run with Aradhana Eye Care Hospital. CRDI eligibility now includes Diploma graduates, students and interns (from the 29 Oct meeting notes) — confirm.',
+    note: 'Both certifications are published from "Certificate Course.pdf". Fee ₹8,999, first batch January 2027 and monthly intakes (client, 6 Nov 2026). Still to confirm: weekly schedule, where in-person sessions happen, what the ₹8,999 fee includes and the assessment format. CRDI eligibility now includes Diploma graduates, students and interns (from the 29 Oct meeting notes) — confirm.',
   },
   {
     page: "Academy › Programs",

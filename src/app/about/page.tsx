@@ -75,7 +75,10 @@ export default function AboutPage() {
           </div>
           <div className="flex flex-col gap-5 lg:col-span-7 lg:col-start-6">
             <Eyebrow>Who leads us</Eyebrow>
-            <h2 id="founder-title" className="font-display text-h2 font-medium text-ink">
+            <h2
+              id="founder-title"
+              className="font-display text-[clamp(1.5rem,6.2vw,2.75rem)] leading-tight font-medium whitespace-nowrap text-ink"
+            >
               {c.displayName}
             </h2>
             <p className="measure-lead text-lead text-slate-600">

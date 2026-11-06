@@ -231,7 +231,7 @@ export function SiteHeader({
             size="sm"
             className="hidden sm:inline-flex"
           >
-            Enquire now
+            Enquire academy
           </Button>
           <MobileMenu academyLinks={academyLinks} services={services} dark={dark} />
         </div>

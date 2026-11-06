@@ -100,6 +100,7 @@ function ProgramTile({ program, today }: { program: Program; today: string }) {
     { label: "Mode", value: modeText(program) },
     { label: "Fee", value: feeText(program) },
     { label: "Batch", value: program.batchSize },
+    { label: "Intakes", value: program.intakeSchedule },
   ].filter((f) => f.value);
   const noun = program.type === "certification" ? "course" : "program";
 

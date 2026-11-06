@@ -111,6 +111,7 @@ export function ProgramSpotlight({ program, today }: { program: Program; today: 
               { label: "Location", value: program.venue },
               { label: "Clinical", value: program.partner },
               { label: "Batch", value: program.batchSize },
+              { label: "Intakes", value: program.intakeSchedule },
             ]}
           />
           {program.eligibilityList?.length ? (

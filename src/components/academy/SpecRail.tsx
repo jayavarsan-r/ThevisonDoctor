@@ -64,6 +64,7 @@ export function SpecRail({ program, today }: { program: Program; today: string }
                   label: "Next intake",
                   value: intakeText(program, today) ?? "Dates to be announced",
                 },
+                { label: "Intakes", value: program.intakeSchedule },
               ]),
           { label: "Apply by", value: applyByText(program, today) },
           { label: "Certificate", value: program.certificate },

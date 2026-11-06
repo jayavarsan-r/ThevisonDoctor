@@ -121,11 +121,10 @@ test.describe("desktop 1440×900", () => {
     await expect(
       page.getByRole("link", { name: "Fellowships: admissions open — view program" }),
     ).toHaveAttribute("href", "/academy/programs/fellowship-advanced-clinical-optometry");
-    // Two certifications are published (no dates yet): the line opens that group.
-    await expect(page.getByRole("link", { name: "Certifications: view programs" })).toHaveAttribute(
-      "href",
-      "/academy#certification-programs",
-    );
+    // Two certifications are published with a January 2027 intake: the line opens that group.
+    await expect(
+      page.getByRole("link", { name: "Certifications: admissions open — view program" }),
+    ).toHaveAttribute("href", "/academy#certification-programs");
     await expect(
       page.getByRole("link", { name: "Clinical training: coming soon — get notified" }),
     ).toHaveAttribute("href", "/academy/enquire?intent=notify");

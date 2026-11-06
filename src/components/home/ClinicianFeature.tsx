@@ -30,7 +30,10 @@ export function ClinicianFeature({ clinician }: { clinician: ClinicianView }) {
 
         <div className="flex flex-col gap-6 lg:col-span-6 lg:col-start-7">
           <Eyebrow tone="dark">Your clinical specialist</Eyebrow>
-          <h2 id="clinician-title" className="font-display text-h2 font-medium text-white">
+          <h2
+            id="clinician-title"
+            className="font-display text-[clamp(1.5rem,6.2vw,2.5rem)] leading-tight font-medium whitespace-nowrap text-white"
+          >
             {clinician.displayName}
           </h2>
           {clinician.qualificationsLine ? (

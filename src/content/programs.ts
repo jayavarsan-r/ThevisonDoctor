@@ -40,8 +40,9 @@ export const programs: Program[] = [
     venue: "Chennai, Tamil Nadu",
     partner: "Aradhana Eye Care Hospital",
     batchSize: "10–15 learners (first batch)",
-    fee: { amountINR: 30000, instalments: true },
+    fee: { amountINR: 29999, instalments: true },
     intakes: [{ start: "2027-01", status: "open" }],
+    intakeSchedule: "January and July",
     outcomes: [
       "Strengthen your clinical knowledge",
       "Enhance your diagnostic understanding",
@@ -130,7 +131,7 @@ export const programs: Program[] = [
     type: "certification",
     title: "Certification in Clinical Ocular Diagnostics and Examination Skills (CODES)",
     outcome:
-      "A four-week certificate course that enhances optometrists’ clinical examination skills and strengthens their ability to identify common ocular abnormalities and recognise conditions requiring further evaluation or referral.",
+      "A four-week certificate course that enhances optometrists’ clinical examination skills and strengthens their ability to diagnose the conditions requiring further evaluation or referral.",
     stages: ["practising-optometrist"],
     specialities: ["diagnostics"],
     eligibility: "B.Optom graduates, qualified optometrists and Diploma in Optometry graduates.",
@@ -144,7 +145,9 @@ export const programs: Program[] = [
     venue: "Chennai, Tamil Nadu",
     partner: "Aradhana Eye Care Hospital",
     batchSize: "10–15 participants",
-    fee: { amountINR: 10000, instalments: true },
+    fee: { amountINR: 8999, instalments: true },
+    intakes: [{ start: "2027-01", status: "open" }],
+    intakeSchedule: "Every month",
     outcomes: [
       "Comprehensive clinical eye examination",
       "Slit-lamp examination and tonometry principles",
@@ -188,8 +191,11 @@ export const programs: Program[] = [
     duration: "4 weeks",
     mode: "hybrid",
     venue: "Chennai, Tamil Nadu",
+    partner: "Aradhana Eye Care Hospital",
     batchSize: "10–15 participants",
-    fee: { amountINR: 10000, instalments: true },
+    fee: { amountINR: 8999, instalments: true },
+    intakes: [{ start: "2027-01", status: "open" }],
+    intakeSchedule: "Every month",
     outcomes: [
       "Fundamentals of retinal anatomy and pathology",
       "Fundus photography techniques and image quality assessment",

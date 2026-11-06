@@ -65,7 +65,8 @@ test.describe("content rules in production", () => {
     const rail = page.getByRole("complementary", { name: "Program details" });
     await expect(rail).toContainText("6 months");
     await expect(rail).toContainText("Hybrid");
-    await expect(rail).toContainText("₹30,000");
+    await expect(rail).toContainText("₹29,999");
+    await expect(rail).toContainText("January and July");
     await expect(rail).toContainText("January 2027");
     await expect(rail).toContainText("Aradhana Eye Care Hospital");
     await expect(
@@ -160,9 +161,10 @@ test.describe("content rules in production", () => {
     const rail = page.getByRole("complementary", { name: "Program details" });
     await expect(rail).toContainText("4 weeks");
     await expect(rail).toContainText("Hybrid");
-    await expect(rail).toContainText("₹10,000");
+    await expect(rail).toContainText("₹8,999");
     await expect(rail).toContainText("10–15 participants");
-    await expect(rail).toContainText("Dates to be announced");
+    await expect(rail).toContainText("January 2027");
+    await expect(rail).toContainText("Every month");
     await expect(rail).toContainText("Aradhana Eye Care Hospital");
     await expect(page.locator("main")).toContainText("Diploma in Optometry graduates");
     await expect(page.locator("main")).not.toContainText(/accredited by/i);
@@ -172,7 +174,8 @@ test.describe("content rules in production", () => {
       "Optical Coherence Tomography (OCT): principles and interpretation",
     );
     const crdi = page.getByRole("complementary", { name: "Program details" });
-    await expect(crdi).toContainText("₹10,000");
+    await expect(crdi).toContainText("₹8,999");
+    await expect(crdi).toContainText("Aradhana Eye Care Hospital");
     await expect(crdi).toContainText("Cash or UPI · instalments accepted (plan varies by course)");
     await expect(page.locator("main")).toContainText("Optometry students and interns");
     await expect(page.locator("main")).toContainText("Diploma in Optometry graduates");
@@ -195,7 +198,10 @@ test.describe("content rules in production", () => {
       "Cash or UPI. Instalments are accepted; the plan varies by course.",
     );
     await expect(faculty).toContainText("announced to enrolled students closer to each session");
-    await expect(page.locator("main")).toContainText("no government accreditation");
+    await expect(page.locator("main")).toContainText(
+      "Certificate issued by The Vision Doctor Academy",
+    );
+    await expect(page.locator("main")).not.toContainText("no government accreditation");
   });
 
   test("the clinician profile shows patients seen", async ({ page }) => {

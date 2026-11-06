@@ -77,7 +77,7 @@ const COPY = {
     label: "For patients · Eye care",
     title: (
       <>
-        Specialist eye care, <em className="text-blue-600">by appointment.</em>
+        Speciality eye care, <em className="text-blue-600">by appointment.</em>
       </>
     ),
     text: "Home consultations, screening and speciality care. We confirm the place, time and fee before your visit.",

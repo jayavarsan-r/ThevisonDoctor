@@ -126,8 +126,8 @@ export default async function ProgramPage({ params }: PageProps<"/academy/progra
           </div>
           {program.partner ? (
             <p className="text-meta text-slate-600">
-              Offered by The Vision Doctor Academy in association with{" "}
-              <span className="font-semibold text-ink">{program.partner}</span>.
+              Offered by <span className="font-semibold text-ink">The Vision Doctor Academy</span>{" "}
+              in association with <span className="font-semibold text-ink">{program.partner}</span>.
             </p>
           ) : null}
         </div>

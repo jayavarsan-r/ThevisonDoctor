@@ -19,7 +19,7 @@ import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "Specialist eye care in Chennai, by appointment",
+  title: "Speciality eye care in Chennai, by appointment",
   description:
     "Home eye consultations, eye screening, myopia management, vision therapy, specialty contact lenses and comprehensive eye examinations in Chennai — by appointment only.",
   alternates: { canonical: "/eye-care" },
@@ -47,7 +47,7 @@ export default function EyeCarePage() {
       <PageHero
         tone="tint"
         eyebrow="Eye care · By appointment"
-        title="Specialist eye care in Chennai, by appointment."
+        title="Speciality eye care in Chennai, by appointment."
         lead={`Consultations with ${clinician.displayName} — at confirmed locations or at your home. Tell us what you need and we'll confirm the place, time and fee before you come.`}
       >
         <Button href="#book" variant="accent" arrow>

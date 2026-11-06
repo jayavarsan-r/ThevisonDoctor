@@ -42,10 +42,15 @@ export const services: Service[] = [
     slug: "eye-screening",
     status: "published",
     title: "Eye screening",
-    short: "Organised eye screening for schools, workplaces and community groups.",
+    short: "Organised eye screening for schools, workplaces, community groups and small opticals.",
     icon: "screening",
     lead: "Organised eye screening programs for early identification of potential eye conditions, visual problems, and the need for further evaluation.",
-    forWhom: ["Schools", "Workplaces", "Community groups and residents' associations"],
+    forWhom: [
+      "Schools",
+      "Workplaces",
+      "Community groups and residents' associations",
+      "Small opticals",
+    ],
     about: [
       "Screening helps identify potential eye conditions and visual problems early, and shows who needs further evaluation.",
       "Screening is not a full eye examination. Where a screening suggests a problem, we recommend a full examination or a referral.",

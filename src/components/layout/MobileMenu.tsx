@@ -114,7 +114,7 @@ export function MobileMenu({
                   </MenuLink>
                 ))}
                 <MenuLink href="/academy/enquire" onClick={close}>
-                  Enquire now
+                  Enquire academy
                 </MenuLink>
               </MenuGroup>
               <MenuGroup title="Eye Care">

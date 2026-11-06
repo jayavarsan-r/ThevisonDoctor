@@ -14,16 +14,17 @@ const WHITE = "#FFFFFF";
 
 const EYE = "M40 75 C72 33 168 33 200 75 C168 117 72 117 40 75 Z";
 
+/** An eye drawn around (cx, cy) — the default is the centre of the 240×150 canvas. */
 function Eye({
-  x = 0,
-  y = 0,
+  cx = 120,
+  cy = 75,
   s = 1,
   iris = 22,
   irisX = 0,
   faded = false,
 }: {
-  x?: number;
-  y?: number;
+  cx?: number;
+  cy?: number;
   s?: number;
   iris?: number;
   irisX?: number;
@@ -31,7 +32,7 @@ function Eye({
 }) {
   return (
     <g
-      transform={`translate(${x} ${y}) scale(${s})`}
+      transform={`translate(${cx - 120 * s} ${cy - 75 * s}) scale(${s})`}
       opacity={faded ? 0.45 : 1}
       strokeDasharray={faded ? "4 5" : undefined}
     >
@@ -108,7 +109,7 @@ const ART: Record<CoverKind, ReactNode> = {
     </g>
   ),
   keratoconus: (
-    <g>
+    <g transform="translate(-26 0)">
       <path d="M92 18 V132" stroke={SOFT} />
       <path d="M92 26 C138 38 138 112 92 124" stroke={LINE} strokeDasharray="4 5" />
       <path d="M92 26 C120 44 168 70 170 75 C168 80 120 106 92 124" stroke={ORANGE} />
@@ -128,11 +129,11 @@ const ART: Record<CoverKind, ReactNode> = {
   ),
   squint: (
     <g>
-      <Eye x={-34} y={20} s={0.6} />
-      <Eye x={62} y={20} s={0.6} irisX={-12} />
-      <circle cx="120" cy="22" r="4" fill={ORANGE} stroke="none" />
-      <path d="M38 65 L120 22" stroke={ORANGE} strokeDasharray="3 4" opacity="0.8" />
-      <path d="M128 65 L176 18" stroke={SOFT} strokeDasharray="3 4" />
+      <Eye cx={72} cy={88} s={0.6} />
+      <Eye cx={168} cy={88} s={0.6} irisX={-12} />
+      <circle cx="120" cy="30" r="4" fill={ORANGE} stroke="none" />
+      <path d="M72 88 L120 30" stroke={ORANGE} strokeDasharray="3 4" opacity="0.8" />
+      <path d="M161 88 L204 36" stroke={SOFT} strokeDasharray="3 4" />
     </g>
   ),
   glaucoma: (
@@ -192,23 +193,23 @@ const ART: Record<CoverKind, ReactNode> = {
   ),
   amblyopia: (
     <g>
-      <Eye x={-34} y={0} s={0.6} />
-      <Eye x={62} y={0} s={0.6} faded />
-      <path d="M44 100 h40 M140 100 h40" stroke={SOFT} />
-      <circle cx="64" cy="100" r="4" fill={ORANGE} stroke="none" />
+      <Eye cx={72} cy={62} s={0.6} />
+      <Eye cx={168} cy={62} s={0.6} faded />
+      <path d="M48 112 h48 M144 112 h48" stroke={SOFT} />
+      <circle cx="72" cy="112" r="4" fill={ORANGE} stroke="none" />
     </g>
   ),
   vergence: (
     <g>
-      <Eye x={-30} y={52} s={0.5} />
-      <Eye x={66} y={52} s={0.5} />
-      <path d="M90 90 L120 26 L150 90" stroke={ORANGE} strokeDasharray="4 4" />
-      <path d="M90 90 L120 10 L150 90" stroke={SOFT} strokeDasharray="2 5" />
-      <circle cx="120" cy="26" r="4" fill={ORANGE} stroke="none" />
+      <Eye cx={76} cy={104} s={0.5} />
+      <Eye cx={164} cy={104} s={0.5} />
+      <path d="M76 104 L120 34 L164 104" stroke={ORANGE} strokeDasharray="4 4" />
+      <path d="M76 104 L120 18 L164 104" stroke={SOFT} strokeDasharray="2 5" />
+      <circle cx="120" cy="34" r="4" fill={ORANGE} stroke="none" />
     </g>
   ),
   accommodation: (
-    <g>
+    <g transform="translate(22 0)">
       <path d="M112 26 C130 50 130 100 112 124 C94 100 94 50 112 26Z" stroke={WHITE} />
       <path d="M20 50 H104 L176 75 M20 100 H104 L176 75" stroke={LINE} />
       <path d="M20 62 H104 L150 75 M20 88 H104 L150 75" stroke={ORANGE} opacity="0.85" />
@@ -217,7 +218,7 @@ const ART: Record<CoverKind, ReactNode> = {
     </g>
   ),
   myopia: (
-    <g>
+    <g transform="translate(14 0)">
       <circle cx="140" cy="75" r="46" stroke={LINE} />
       <path d="M184 52 C192 66 192 84 184 98" stroke={WHITE} strokeWidth="3" />
       <path d="M20 58 H100 L158 75 M20 92 H100 L158 75" stroke={ORANGE} />

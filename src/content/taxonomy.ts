@@ -89,7 +89,8 @@ export const programTypeExplainers: {
     label: "Continuing Medical Education (CME)",
     description:
       "Educational sessions designed to support continuous professional learning and keep eye care professionals updated on current clinical practices and advancements.",
-    typicallyFor: "Practising eye-care professionals keeping their knowledge current.",
+    typicallyFor:
+      "Optometry students and practising eye-care professionals keeping their knowledge current.",
   },
 ];
 

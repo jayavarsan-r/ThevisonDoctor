@@ -26,7 +26,7 @@ export function CareBand({
         <SectionHeader
           id="care-title"
           label="Eye care"
-          title="Specialist eye care, by appointment."
+          title="Speciality eye care, by appointment."
           layout="split"
           lead={`Consultations with ${clinicianName} — at confirmed locations or at your home. Tell us what you need and we'll confirm the place, time and fee before you come.`}
         />

@@ -50,6 +50,8 @@ export interface Program {
    * `start` is ISO: "2027-01-12", or "2027-01" when only the month is confirmed.
    */
   intakes?: { start: string; applyBy?: string; status: "open" | "full" | "closed" }[];
+  /** How often new batches start, e.g. "January and July" or "Every month". */
+  intakeSchedule?: string;
   outcomes?: string[];
   highlights?: string[];
   curriculum?: {

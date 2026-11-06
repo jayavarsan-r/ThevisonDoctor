@@ -18,7 +18,7 @@ const NEXT_STEPS = [
     text: "We look at your background and the programs you're interested in.",
   },
   {
-    title: "Eligibility conversation",
+    title: "Meet eligibility",
     text: "We contact you to confirm eligibility, schedule and fees.",
   },
   { title: "You decide", text: "There's no obligation — you choose whether to secure a place." },

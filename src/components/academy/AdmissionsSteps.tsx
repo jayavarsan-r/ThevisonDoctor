@@ -3,7 +3,7 @@ import { cn } from "@/lib/cn";
 export const ADMISSION_STEPS = [
   { title: "Enquire", text: "Tell us your background and the program you're interested in." },
   {
-    title: "Eligibility conversation",
+    title: "Meet eligibility",
     text: "We confirm eligibility, schedule and fees with you directly.",
   },
   { title: "Confirm your place", text: "Secure your seat for the intake that suits you." },

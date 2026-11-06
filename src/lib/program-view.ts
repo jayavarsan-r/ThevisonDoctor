@@ -77,8 +77,8 @@ export function accreditationText(a: Accreditation) {
     return `Accredited by ${a.body}${a.points ? ` · ${a.points} CE/CPD points` : ""}`;
   }
   if (a.status === "applied") return "Applied for — not yet approved";
-  // Confirmed by the Academy (29 Oct 2026): no government accreditation.
-  return "Certificate issued by The Vision Doctor Academy (no government accreditation)";
+  // The Academy issues its own certificates (29 Oct 2026; wording per client, 6 Nov).
+  return "Certificate issued by The Vision Doctor Academy";
 }
 
 export function cpdText(a: Accreditation) {
