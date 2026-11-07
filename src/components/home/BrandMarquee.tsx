@@ -39,10 +39,7 @@ export function BrandMarquee({
           id="brands-title"
           className="flex-1 eyebrow text-blue-900 md:max-w-[12rem] md:flex-none"
         >
-          <span className="flex items-center gap-2.5">
-            <span aria-hidden className="size-1.5 rounded-full bg-orange-500" />
-            Brand collaborations
-          </span>
+          Brand collaborations
         </h2>
         <MarqueeToggle target="brands-marquee" className="md:order-3" />
         <div

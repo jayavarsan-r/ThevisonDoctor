@@ -1,7 +1,6 @@
 import { FileWarning } from "lucide-react";
 import type { ReactNode } from "react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { legal } from "@/content/legal";
 
 /** Shell for legal pages: draft banner (until reviewed), title and prose column. */
@@ -32,7 +31,6 @@ export function LegalPage({
       <div className="container-page py-12 md:py-16">
         <Breadcrumb items={[{ name: "Home", href: "/" }, { name: title }]} />
         <header className="mt-8 flex max-w-[44rem] flex-col gap-4 border-b border-line pb-10">
-          <Eyebrow>Legal</Eyebrow>
           <h1 className="font-display text-h1 font-medium text-ink">{title}</h1>
           {lead ? <p className="text-lead text-slate-600">{lead}</p> : null}
           <p className="font-mono text-[13px] text-slate-600">

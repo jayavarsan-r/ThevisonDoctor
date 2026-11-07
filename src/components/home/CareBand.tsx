@@ -37,15 +37,9 @@ export function CareBand({
 
         {cases.length ? (
           <div className="mt-16 md:mt-24">
-            <div className="flex flex-col gap-3">
-              <p className="flex items-center gap-2.5 eyebrow text-blue-900">
-                <span aria-hidden className="size-1.5 rounded-full bg-orange-500" />
-                Before and after
-              </p>
-              <h3 className="font-display text-[clamp(1.6rem,2.8vw,2.25rem)] leading-tight font-medium text-ink">
-                Non-surgical care, before and after.
-              </h3>
-            </div>
+            <h3 className="font-display text-[clamp(1.6rem,2.8vw,2.25rem)] leading-tight font-medium text-ink">
+              Non-surgical care, before and after.
+            </h3>
             <CaseGallery
               cases={cases}
               serviceTitles={serviceTitles}

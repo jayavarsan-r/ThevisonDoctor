@@ -13,7 +13,6 @@ import {
   type ReactNode,
 } from "react";
 import { buttonClasses, type ButtonVariant } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { useInViewAnimation, useMediaQuery } from "@/hooks/useInViewAnimation";
 import { track } from "@/lib/analytics";
@@ -311,7 +310,6 @@ export function PathSelector({
           >
             <div className="flex flex-col gap-3.5 md:gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
               <div className="flex flex-col gap-3 md:gap-5">
-                <Eyebrow>Choose your path</Eyebrow>
                 <h2
                   id="path-title"
                   className="font-display text-[clamp(1.75rem,7vw,2.25rem)] leading-[1.08] font-medium tracking-[-0.01em] text-ink md:text-h2"
@@ -366,18 +364,7 @@ export function PathSelector({
                         animate={active ? "active" : "inactive"}
                         className="order-2 flex flex-col justify-center px-6 pt-4 pb-6 lg:order-1 lg:p-12"
                       >
-                        <m.p
-                          data-path-anim
-                          variants={textItem}
-                          className={cn(
-                            "flex items-center gap-2.5 eyebrow",
-                            dark ? "text-blue-300" : "text-blue-900",
-                          )}
-                        >
-                          <span
-                            aria-hidden
-                            className="size-1.5 shrink-0 rounded-full bg-orange-500"
-                          />
+                        <m.p data-path-anim variants={textItem} className="sr-only">
                           {copy.label}
                         </m.p>
                         <m.h3

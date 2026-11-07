@@ -23,6 +23,8 @@ export function useEnquiry<T extends FieldValues>({
 }) {
   const router = useRouter();
   const [serverError, setServerError] = useState<string | null>(null);
+  /** Set when the enquiry was handed to the visitor's email app instead of sent by us. */
+  const [emailHandoff, setEmailHandoff] = useState<string | null>(null);
   const started = useRef(false);
   const summaryRef = useRef<HTMLDivElement>(null);
 
@@ -39,6 +41,7 @@ export function useEnquiry<T extends FieldValues>({
 
   const submit = async (data: T) => {
     setServerError(null);
+    setEmailHandoff(null);
     try {
       const res = await fetch("/api/enquiry", {
         method: "POST",
@@ -49,7 +52,15 @@ export function useEnquiry<T extends FieldValues>({
         ok?: boolean;
         ref?: string;
         message?: string;
+        mailto?: string;
       } | null;
+      if (json?.mailto) {
+        // No online delivery configured: open the visitor's email app, addressed to us.
+        track("enquiry_submit", { kind, channel: "email-app" });
+        setEmailHandoff(json.mailto);
+        window.location.href = json.mailto;
+        return;
+      }
       if (!res.ok || !json?.ok || !json.ref) {
         throw new Error(json?.message || "We couldn't send your enquiry.");
       }
@@ -61,5 +72,5 @@ export function useEnquiry<T extends FieldValues>({
     }
   };
 
-  return { serverError, summaryRef, onFocusCapture, summary, submit };
+  return { serverError, emailHandoff, summaryRef, onFocusCapture, summary, submit };
 }

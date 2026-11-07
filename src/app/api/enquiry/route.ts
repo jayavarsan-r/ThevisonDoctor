@@ -1,3 +1,4 @@
+import nodemailer from "nodemailer";
 import { Resend } from "resend";
 import { programs } from "@/content/programs";
 import { services } from "@/content/services";
@@ -18,9 +19,13 @@ import {
 /**
  * POST /api/enquiry — receives Academy and Eye Care enquiries.
  *
- * Delivery: Resend email (RESEND_API_KEY + ENQUIRY_FROM_EMAIL) and/or a Google
- * Apps Script webhook (SHEETS_WEBHOOK_URL). With neither configured, dev logs
- * the submission and production refuses it (503) so no enquiry is silently lost.
+ * Delivery to the company inbox (ENQUIRY_TO_EMAIL, default site.email):
+ *  - Gmail SMTP (SMTP_USER + SMTP_PASS, a Google "app password"), and/or
+ *  - Resend (RESEND_API_KEY + ENQUIRY_FROM_EMAIL), and/or
+ *  - a Google Apps Script webhook (SHEETS_WEBHOOK_URL).
+ * With none configured, the reply carries a ready-made email (`mailto`) and the
+ * form opens the visitor's email app addressed to the company, so no enquiry
+ * is silently lost.
  * Personal data is never written to production logs.
  */
 
@@ -95,8 +100,8 @@ export async function POST(request: Request) {
   const outcome = await deliver(ref, data, record);
 
   if (outcome === "unconfigured") {
-    console.error(`[enquiry] ${ref} not delivered: no delivery channel configured`);
-    return reply(503, { ok: false, message: "Online enquiries are not available right now." });
+    console.warn(`[enquiry] ${ref}: no delivery channel configured — handing over to email`);
+    return reply(200, { ok: false, ref, mailto: mailtoFor(ref, data, record) });
   }
   if (outcome === "failed") {
     console.error(`[enquiry] ${ref} delivery failed on every channel`);
@@ -174,13 +179,16 @@ async function deliver(
   const to = process.env.ENQUIRY_TO_EMAIL || site.email;
   const webhook = process.env.SHEETS_WEBHOOK_URL;
 
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+  if (smtpUser && smtpPass) jobs.push(sendSmtp(smtpUser, smtpPass, to, ref, d, record));
   if (resendKey && from) jobs.push(sendEmail(resendKey, from, to, ref, d, record));
   if (webhook) jobs.push(postWebhook(webhook, ref, d.kind, record));
 
   if (!jobs.length) {
     if (process.env.NODE_ENV !== "production") {
       console.info(
-        `[enquiry] dev mode — not delivered (configure RESEND_API_KEY or SHEETS_WEBHOOK_URL)\n` +
+        `[enquiry] dev mode — not delivered (configure SMTP_USER/SMTP_PASS, RESEND_API_KEY or SHEETS_WEBHOOK_URL)\n` +
           record.map(([k, v]) => `  ${k}: ${v}`).join("\n"),
       );
       return "dev";
@@ -214,6 +222,42 @@ async function sendEmail(
     ...(d.email ? { replyTo: d.email } : {}),
   });
   if (error) throw new Error(error.message);
+}
+
+const subjectFor = (ref: string, d: Enquiry) =>
+  `[${d.kind === "academy" ? "Academy enquiry" : "Eye care enquiry"}] ${ref} — ${d.name}`;
+const bodyFor = (d: Enquiry, record: Row[]) =>
+  `${d.kind === "academy" ? "Academy enquiry" : "Eye care enquiry"} received via the website.\n\n${record.map(([k, v]) => `${k}: ${v}`).join("\n")}\n`;
+
+/** Gmail (or any SMTP) using an app password — sends from the company account to itself. */
+async function sendSmtp(
+  user: string,
+  pass: string,
+  to: string,
+  ref: string,
+  d: Enquiry,
+  record: Row[],
+) {
+  const transport = nodemailer.createTransport({
+    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    port: Number(process.env.SMTP_PORT || 465),
+    secure: Number(process.env.SMTP_PORT || 465) === 465,
+    auth: { user, pass },
+  });
+  await transport.sendMail({
+    from: `"${site.shortName} website" <${user}>`,
+    to,
+    subject: subjectFor(ref, d),
+    text: bodyFor(d, record),
+    ...(d.email ? { replyTo: d.email } : {}),
+  });
+}
+
+/** The same enquiry as a mailto: link to the company inbox (fallback when nothing is configured). */
+function mailtoFor(ref: string, d: Enquiry, record: Row[]) {
+  const to = process.env.ENQUIRY_TO_EMAIL || site.email;
+  const q = new URLSearchParams({ subject: subjectFor(ref, d), body: bodyFor(d, record) });
+  return `mailto:${to}?${q.toString().replace(/\+/g, "%20")}`;
 }
 
 async function postWebhook(url: string, ref: string, kind: string, record: Row[]) {

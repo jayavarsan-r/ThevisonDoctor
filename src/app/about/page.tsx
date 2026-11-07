@@ -5,7 +5,6 @@ import type { ReactNode } from "react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { DraftBadge } from "@/components/ui/DraftBadge";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { site } from "@/content/site";
@@ -39,7 +38,6 @@ export default function AboutPage() {
 
       <section className="bg-blue-50">
         <div className="container-page flex flex-col gap-6 py-14 md:py-20 lg:py-24">
-          <Eyebrow>About us</Eyebrow>
           <h1 className="max-w-[22ch] font-display text-h1 font-medium text-ink">
             Advancing optometry education and accessible eye care.
           </h1>
@@ -74,7 +72,6 @@ export default function AboutPage() {
             />
           </div>
           <div className="flex flex-col gap-5 lg:col-span-7 lg:col-start-6">
-            <Eyebrow>Who leads us</Eyebrow>
             <h2
               id="founder-title"
               className="font-display text-[clamp(1.5rem,6.2vw,2.75rem)] leading-tight font-medium whitespace-nowrap text-ink"
@@ -250,7 +247,6 @@ function Row({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section aria-label={title} className="grid gap-5 py-10 md:py-12 lg:grid-cols-12 lg:gap-8">
       <div className="flex flex-col gap-3 lg:col-span-4">
-        <Eyebrow>{title}</Eyebrow>
         <h2 className="font-display text-[clamp(1.6rem,2.6vw,2rem)] leading-tight font-medium text-ink">
           {title}
         </h2>

@@ -127,10 +127,6 @@ export default async function BlogPostPage({ params }: PageProps<"/blog/[slug]">
             <Breadcrumb
               items={[{ name: "Blog", href: "/blog" }, { name: blogCategoryLabels[post.category] }]}
             />
-            <p className="flex items-center gap-2.5 eyebrow text-blue-900">
-              <span aria-hidden className="size-1.5 rounded-full bg-orange-500" />
-              {blogCategoryLabels[post.category]}
-            </p>
             <h1 className="max-w-[26ch] font-display text-h1 font-medium text-ink">{post.title}</h1>
             <p className="measure-lead text-lead text-slate-600">{post.intro}</p>
             <p className="flex flex-wrap items-center gap-x-5 gap-y-2 text-meta text-slate-600">

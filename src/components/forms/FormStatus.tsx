@@ -55,12 +55,43 @@ export const ErrorSummary = forwardRef<HTMLDivElement, { errors: SummaryError[] 
 export function FormStatus({
   error,
   context,
+  emailHandoff,
 }: {
   error: string | null;
   context: "academy" | "care";
+  /** mailto: link when the enquiry was handed to the visitor's email app. */
+  emailHandoff?: string | null;
 }) {
   return (
     <div role="alert" aria-live="assertive">
+      {emailHandoff ? (
+        <div className="rounded-card border border-blue-200 bg-blue-50 p-5">
+          <p className="font-semibold text-ink">Almost done — press Send in your email app.</p>
+          <p className="mt-1 text-[15px] text-slate-600">
+            Your enquiry is ready in a new email to{" "}
+            <span className="font-semibold text-ink">{site.email}</span>. If your email app
+            didn&apos;t open,{" "}
+            <a href={emailHandoff} className="link">
+              open the email again
+            </a>
+            , or reach us on{" "}
+            <a
+              href={buildWhatsAppLink(context)}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-wa-context={context}
+              className="link"
+            >
+              WhatsApp<span className="sr-only"> (opens in a new tab)</span>
+            </a>{" "}
+            or{" "}
+            <a href={telLink} className="link">
+              {site.phone.display}
+            </a>
+            .
+          </p>
+        </div>
+      ) : null}
       {error ? (
         <div className="rounded-card border border-error bg-white p-5">
           <p className="font-semibold text-error">{error}</p>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { AcademyEnquiryForm } from "@/components/forms/AcademyEnquiryForm";
 import { ContactAside } from "@/components/forms/ContactAside";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { getPrograms } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -32,7 +31,6 @@ export default function AcademyEnquirePage() {
       <div className="container-page py-12 md:py-16">
         <Breadcrumb items={[{ name: "Academy", href: "/academy" }, { name: "Enquire" }]} />
         <div className="mt-8 flex max-w-[44rem] flex-col gap-5">
-          <Eyebrow>Academy enquiry</Eyebrow>
           <h1 className="font-display text-h1 font-medium text-ink">Enquire about the Academy.</h1>
           <p className="measure-lead text-lead text-slate-600">
             Tell us about your background and what you&apos;d like to learn. We&apos;ll reply with

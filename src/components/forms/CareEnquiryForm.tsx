@@ -97,12 +97,13 @@ export function CareEnquiryForm({
   const forWhom = useWatch({ control, name: "forWhom" });
   const preferredContact = useWatch({ control, name: "preferredContact" });
 
-  const { serverError, summaryRef, onFocusCapture, summary, submit } = useEnquiry<CareEnquiry>({
-    kind: "care",
-    fieldOrder: Object.entries(ID) as [keyof CareEnquiry & string, string][],
-    thankYou: (ref, d) =>
-      `/thank-you/eye-care?ref=${encodeURIComponent(ref)}${d.service && d.service !== "not-sure" ? `&service=${encodeURIComponent(d.service)}` : ""}`,
-  });
+  const { serverError, emailHandoff, summaryRef, onFocusCapture, summary, submit } =
+    useEnquiry<CareEnquiry>({
+      kind: "care",
+      fieldOrder: Object.entries(ID) as [keyof CareEnquiry & string, string][],
+      thankYou: (ref, d) =>
+        `/thank-you/eye-care?ref=${encodeURIComponent(ref)}${d.service && d.service !== "not-sure" ? `&service=${encodeURIComponent(d.service)}` : ""}`,
+    });
 
   // Pre-fill from ?service= on the hub page.
   useEffect(() => {
@@ -420,7 +421,7 @@ export function CareEnquiryForm({
 
       <Turnstile siteKey={turnstileSiteKey} onToken={(t) => setValue("turnstileToken", t)} />
 
-      <FormStatus error={serverError} context="care" />
+      <FormStatus error={serverError} context="care" emailHandoff={emailHandoff} />
 
       <div className="flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-meta text-slate-600">

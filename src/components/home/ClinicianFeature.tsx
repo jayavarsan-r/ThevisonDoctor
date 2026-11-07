@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/Button";
 import { DraftBadge } from "@/components/ui/DraftBadge";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import type { ClinicianView } from "@/lib/content";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
@@ -29,7 +28,6 @@ export function ClinicianFeature({ clinician }: { clinician: ClinicianView }) {
         </div>
 
         <div className="flex flex-col gap-6 lg:col-span-6 lg:col-start-7">
-          <Eyebrow tone="dark">Your clinical specialist</Eyebrow>
           <h2
             id="clinician-title"
             className="font-display text-[clamp(1.5rem,6.2vw,2.5rem)] leading-tight font-medium whitespace-nowrap text-white"

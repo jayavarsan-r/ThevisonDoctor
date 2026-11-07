@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 const STAGE_CARDS: { stage: Stage; text: string }[] = [
   {
     stage: "student-intern",
-    text: "The Certification in Retinal Diagnostics and Imaging (CRDI) is open to optometry students and interns. Short clinical workshops and CME will be listed here as dates are announced.",
+    text: "Both certifications — CODES and CRDI — are open to optometry students and interns. Short clinical workshops and CME will be listed here as dates are announced.",
   },
   {
     stage: "practising-optometrist",

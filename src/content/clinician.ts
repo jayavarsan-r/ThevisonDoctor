@@ -19,7 +19,7 @@ export const clinician: Clinician = {
   credential: CREDENTIAL,
   role: "Optometrist",
   summary:
-    "He has 5 years of clinical expertise as an eye care professional and clinical vision specialist.",
+    "He has 5 years of clinical expertise across multiple eye hospitals and clinics as an eye care professional and clinical vision specialist.",
   // "Specialised in" — the clinician's own list (Nov 2026).
   expertise: [
     "Ocular disease",

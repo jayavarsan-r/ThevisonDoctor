@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
-import { Eyebrow } from "./Eyebrow";
 
 /**
  * Eyebrow + Newsreader H2 + optional lead.
@@ -43,10 +42,7 @@ export function SectionHeader({
   if (layout === "split") {
     return (
       <header className={cn("grid gap-6 lg:grid-cols-12 lg:gap-8", className)}>
-        <div className="flex flex-col gap-5 lg:col-span-6">
-          <Eyebrow tone={tone}>{label}</Eyebrow>
-          {heading}
-        </div>
+        <div className="flex flex-col gap-5 lg:col-span-6">{heading}</div>
         <div className="flex flex-col justify-end gap-6 lg:col-span-5 lg:col-start-8">
           {leadEl}
           {action}
@@ -57,7 +53,6 @@ export function SectionHeader({
 
   return (
     <header className={cn("flex flex-col gap-5", className)}>
-      <Eyebrow tone={tone}>{label}</Eyebrow>
       {heading}
       {leadEl}
       {action}

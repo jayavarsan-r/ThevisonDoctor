@@ -132,13 +132,16 @@ export const programs: Program[] = [
     title: "Certification in Clinical Ocular Diagnostics and Examination Skills (CODES)",
     outcome:
       "A four-week certificate course that enhances optometrists’ clinical examination skills and strengthens their ability to diagnose the conditions requiring further evaluation or referral.",
-    stages: ["practising-optometrist"],
+    // Students and interns added at the client's request (7 Nov 2026).
+    stages: ["practising-optometrist", "student-intern"],
     specialities: ["diagnostics"],
-    eligibility: "B.Optom graduates, qualified optometrists and Diploma in Optometry graduates.",
+    eligibility:
+      "B.Optom graduates, qualified optometrists, Diploma in Optometry graduates, and optometry students and interns.",
     eligibilityList: [
       "B.Optom graduates",
       "Qualified optometrists",
       "Diploma in Optometry graduates",
+      "Optometry students and interns",
     ],
     duration: "4 weeks",
     mode: "hybrid",

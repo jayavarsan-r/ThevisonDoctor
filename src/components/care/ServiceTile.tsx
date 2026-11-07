@@ -59,10 +59,6 @@ export function GroupedServices({
         >
           <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
             <div className="flex flex-col gap-3">
-              <p className="flex items-center gap-2.5 eyebrow text-blue-900">
-                <span aria-hidden className="size-1.5 rounded-full bg-orange-500" />
-                Super-speciality
-              </p>
               <h3
                 id="super-speciality-title"
                 className="font-display text-[clamp(1.5rem,2.6vw,2rem)] leading-tight font-medium text-ink"

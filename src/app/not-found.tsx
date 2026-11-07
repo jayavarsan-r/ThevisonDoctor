@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { OpticalRings } from "@/components/motif/OpticalRings";
 import { Button } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -17,7 +16,6 @@ export default function NotFound() {
         className="absolute top-1/2 right-[-40%] -z-10 w-[900px] max-w-none -translate-y-1/2 opacity-80 md:right-[-12%]"
       />
       <div className="container-page flex min-h-[70svh] flex-col justify-center gap-6 py-20">
-        <Eyebrow>Error 404</Eyebrow>
         <h1 className="max-w-[14ch] font-display text-display font-medium text-ink">
           This page is out of focus.
         </h1>

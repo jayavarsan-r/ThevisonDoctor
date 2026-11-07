@@ -83,12 +83,13 @@ export function AcademyEnquiryForm({
   const intent = useWatch({ control, name: "intent" });
   const preferredContact = useWatch({ control, name: "preferredContact" });
 
-  const { serverError, summaryRef, onFocusCapture, summary, submit } = useEnquiry<AcademyEnquiry>({
-    kind: "academy",
-    fieldOrder: Object.entries(ID) as [keyof AcademyEnquiry & string, string][],
-    thankYou: (ref, d) =>
-      `/thank-you/academy?ref=${encodeURIComponent(ref)}${d.program ? `&program=${encodeURIComponent(d.program)}` : ""}`,
-  });
+  const { serverError, emailHandoff, summaryRef, onFocusCapture, summary, submit } =
+    useEnquiry<AcademyEnquiry>({
+      kind: "academy",
+      fieldOrder: Object.entries(ID) as [keyof AcademyEnquiry & string, string][],
+      thankYou: (ref, d) =>
+        `/thank-you/academy?ref=${encodeURIComponent(ref)}${d.program ? `&program=${encodeURIComponent(d.program)}` : ""}`,
+    });
 
   // Pre-fill from ?program= and ?intent= (§7.4).
   useEffect(() => {
@@ -338,7 +339,7 @@ export function AcademyEnquiryForm({
 
       <Turnstile siteKey={turnstileSiteKey} onToken={(t) => setValue("turnstileToken", t)} />
 
-      <FormStatus error={serverError} context="academy" />
+      <FormStatus error={serverError} context="academy" emailHandoff={emailHandoff} />
 
       <div className="flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-meta text-slate-600">

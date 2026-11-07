@@ -65,13 +65,12 @@ export function CaseCard({
         <Photo photo={item.after} label="After" sizes={sizes} />
       </div>
       <div className="flex flex-1 flex-col gap-2.5 p-5 sm:p-7">
-        <p className="flex items-center gap-2.5 eyebrow text-orange-700">
-          <span aria-hidden className="size-1.5 rounded-full bg-orange-500" />
-          Treated with {item.treatment.toLowerCase()}
-        </p>
         <H id={titleId} className="text-h3 font-semibold text-ink">
           {item.condition}
         </H>
+        <p className="text-[15px] font-semibold text-blue-900">
+          Treated with {item.treatment.toLowerCase()}
+        </p>
         <p className="measure text-[15px] text-slate-600">{item.summary}</p>
         {item.safetyNote ? (
           <p className="flex gap-2 text-meta text-slate-600">

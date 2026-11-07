@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
-import { Eyebrow } from "./Eyebrow";
 
 /**
  * Compact page hero. `dark` sits under the transparent header (route must be
@@ -40,7 +39,6 @@ export function PageHero({
       <div className="container-page grid gap-10 py-14 md:py-20 lg:grid-cols-12 lg:gap-8 lg:py-24">
         <div className={cn("flex flex-col gap-6", aside ? "lg:col-span-7" : "lg:col-span-9")}>
           {breadcrumb}
-          {eyebrow ? <Eyebrow tone={dark ? "dark" : "light"}>{eyebrow}</Eyebrow> : null}
           <h1 className={cn("font-display text-h1 font-medium", dark ? "text-white" : "text-ink")}>
             {title}
           </h1>
