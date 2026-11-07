@@ -17,7 +17,7 @@ export function LegalPage({
     <article className="bg-white">
       {!legal.reviewed ? (
         <div role="note" className="border-b border-dashed border-orange-700 bg-orange-50">
-          <div className="container-page flex items-start gap-3 py-4 text-[15px] text-orange-700">
+          {/* <div className="container-page flex items-start gap-3 py-4 text-[15px] text-orange-700">
             <FileWarning aria-hidden strokeWidth={1.5} className="mt-0.5 size-5 shrink-0" />
             <p>
               <strong className="font-semibold">
@@ -25,7 +25,7 @@ export function LegalPage({
               </strong>{" "}
               Items in brackets must be completed by the owner.
             </p>
-          </div>
+          </div> */}
         </div>
       ) : null}
       <div className="container-page py-12 md:py-16">
@@ -34,7 +34,7 @@ export function LegalPage({
           <h1 className="font-display text-h1 font-medium text-ink">{title}</h1>
           {lead ? <p className="text-lead text-slate-600">{lead}</p> : null}
           <p className="font-mono text-[13px] text-slate-600">
-            Last updated: {legal.lastUpdated || <Placeholder>date of publication</Placeholder>}
+            Last updated: {legal.lastUpdated || "07 November 2026"}
           </p>
         </header>
         <div className="legal-prose mt-10 max-w-[44rem]">{children}</div>
